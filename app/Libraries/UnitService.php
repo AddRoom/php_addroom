@@ -3,12 +3,12 @@
 namespace App\Libraries;
 
 use App\Entities\Unit;
+use App\Models\ScheduleModel;
 use App\Models\UnitModel;
 use CodeIgniter\Config\Factories;
 
 class UnitService extends MyBaseService 
 {
-
     private static array $serviceTimes = [
         '10 minutes' => '10 minutos',
         '15 minutes' => '15 minutos',
@@ -76,6 +76,34 @@ class UnitService extends MyBaseService
     }
 
     /**
+     * Renderiza uma lista não ordenada HTML dos agendamentos da unidade 
+     */
+    public function renderUnitSchedules (int|string $unitId): string 
+    {
+        // buscamos os agendamentos 
+        $schedules = model(ScheduleModel::class)->getUnitSchedules($unitId); 
+
+        if (empty($schedules)) {
+            return self::TEXT_FOR_NO_DATA;
+        }
+
+        $list = []; 
+
+        foreach ($schedules as $schedule) {
+
+            $list[] = "<p>
+                            <strong>Unidade: </strong> {$schedule->unit} <br>
+                            <strong>Endereço: </strong> {$schedule->address} <br>
+                            <strong>Salas: </strong> {$schedule->service} <br>
+                            <strong>Situação: </strong> {$schedule->situation()} <br>
+                            <strong>Usuario: </strong> {$schedule->user} <br>
+                        </p>";
+        }
+
+        return ul ($list); 
+    }
+
+    /**
      * Renderiza o dropdown com as ações possiveis para cada registro
      * 
      * @param Unit $unit
@@ -93,7 +121,8 @@ class UnitService extends MyBaseService
                         </button>';
         $btnActions .= '<div class="dropdown-menu">';
         $btnActions .= anchor(route_to('units.edit', $unit->id), 'Editar', ['class' => 'dropdown-item']);
-        $btnActions .= anchor(route_to('units.services', $unit->id), 'Serviços', ['class' => 'dropdown-item']);
+        $btnActions .= anchor(route_to('units.services', $unit->id), 'Salas', ['class' => 'dropdown-item']);
+        $btnActions .= anchor(route_to('units.schedules', $unit->id), 'Reservas', ['class' => 'dropdown-item']);
         $btnActions .= view_cell(
             library: 'ButtonsCell::action', 
             params: [

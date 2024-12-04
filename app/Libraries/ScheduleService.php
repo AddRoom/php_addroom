@@ -65,7 +65,7 @@ class ScheduleService
 
         if (empty($services)) {
 
-            throw new InvalidArgumentException("Os serviços asociados á Unidade {$unit->name} não estão ativos ou não existem");
+            throw new InvalidArgumentException("Os serviços associados á Unidade {$unit->name} não estão ativos ou não existem");
         }
 
         $options = [];
@@ -98,7 +98,7 @@ class ScheduleService
                 return "A data escolhida não está mais disponiveis"; 
             }
 
-            $schedule= new Schedule([
+            $schedule = new Schedule([
 
                 'unit_id'     => $request->unit_id, 
                 'service_id'  => $request->service_id, 

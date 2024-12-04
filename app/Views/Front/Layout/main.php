@@ -11,8 +11,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
 
-
-
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('front/'); ?>bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -26,6 +24,22 @@
     <meta name="theme-color" content="#7952b3">
 
     <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+        body {
+
+            font-family: "Inter", sans-serif;
+        }
+
+        .nav-item {
+
+            margin-left: 15px;
+            margin-top: 3px;
+            margin-bottom: 8px;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -34,6 +48,8 @@
             user-select: none;
         }
 
+       
+        
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -51,20 +67,19 @@
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<?php echo route_to('home') ?>">Meus Agendamentos</a>
+                <a class="navbar-brand logo" href="<?php echo route_to('home'); ?>">AddRoom</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <ul class="navbar-nav mx-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?php echo route_to('home') ?>">Home</a>
+                            <a class="nav-link btn btn-primary excluir active px-3" aria-current="page" href="<?php echo route_to('home') ?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo route_to('schedules.new') ?>">Criar agendamentos</a>
+                            <a class="nav-link btn active btn-primary excluir px-3" href="<?php echo route_to('schedules.new') ?>">Criar reserva</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo route_to('schedules.my') ?>">Meus agendamentos</a>
+                            <a class="nav-link  btn active btn-primary excluir px-3" href="<?php echo route_to('schedules.my') ?>">Minhas reservas</a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -73,14 +88,14 @@
 
                             <?php if (auth()->loggedIn()) : ?>
 
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="<?php echo route_to('logout') ?>">Sair</a>
+                                <li class="nav-item vermelho">
+                                    <a class="nav-link btn mt-1 btn-danger active" aria-current="page" href="<?php echo route_to('logout') ?>">Logout</a>
                                 </li>
 
-                                <?php else : ?>
+                            <?php else : ?>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo route_to('login') ?>">Entrar | Registrar-se</a>
+                                    <a class="nav-link btn btn-primary mt-1" href="<?php echo route_to('login') ?>">Entrar | Registrar-se</a>
                                 </li>
 
                             <?php endif; ?>
@@ -96,12 +111,6 @@
 
         <?php echo $this->renderSection('content'); ?>
     </main>
-
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
-        </div>
-    </footer>
 
     <script src="<?php echo base_url('front/'); ?>bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

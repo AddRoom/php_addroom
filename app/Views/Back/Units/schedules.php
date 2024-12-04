@@ -9,8 +9,7 @@
 
 <?php echo $this->section('css'); ?>
 
-<!-- Custom styles for this page -->
-<link href="<?= base_url('back/vendor/datatables/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
+
 
 <?php echo $this->endSection(); ?>
 
@@ -24,15 +23,13 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary"><?php echo $title; ?></h6>
-            <a href="<?php echo route_to('units.new'); ?>" class="btn d-none btn-success btn-sm float-right">Nova</a> <!-- d-none -> remova-->
+
+            <a href="<?php echo route_to('units'); ?>" class="btn btn-sm btn-secondary mt-3">Voltar</a>
         </div>
 
         <div class="card-body">
-            <div class="table-responsive">
-            
-                <?php echo $units; ?>
 
-            </div>
+            <?php echo $schedules; ?>
         </div>
     </div>
 
@@ -44,12 +41,6 @@
 
 <?php echo $this->section('js'); ?>
 
-<!-- Page level plugins -->
-<script src="<?= base_url('back/vendor/datatables/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?= base_url('back/vendor/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
-
-<!-- Page level custom scripts -->
-<script src="<?= base_url('back/js/demo/datatables-demo.js'); ?>"></script>
 
 
 <?php echo $this->endSection(); ?>

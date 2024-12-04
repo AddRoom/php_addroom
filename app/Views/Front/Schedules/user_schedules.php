@@ -17,7 +17,7 @@
 
 <div class="container pt-5">
 
-    <h1 class="mt-5"><?php echo $title; ?></h1>
+    <h1 class="mt-5">Minhas Reservas:</h1>
 
     <div id="boxSuccess" class="mb-4 mt-3">
 

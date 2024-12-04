@@ -25,7 +25,6 @@ class UnitsController extends BaseController
         $this->unitModel = model(UnitModel::class);
     }
 
-
     /** 
      * Renderiza a view para gerenciar as unidades
      *
@@ -35,7 +34,7 @@ class UnitsController extends BaseController
     {
 
         $data = [
-            'title' => 'Unidades',
+            'title' => 'Unidade',
             'units' => $this->unitService->renderUnits(),
         ];
 
@@ -160,5 +159,22 @@ class UnitsController extends BaseController
         $this->unitModel->delete($unit->id);
 
         return redirect()->route('units')->with('success', 'Sucesso!');
+    }
+
+     /** 
+     * Renderiza a view para exibir os agendamentos da unidade
+     *
+     * @param integer $id
+     * @return RenderInterface
+     */
+    public function schedules(int $id)
+    {
+        $data = [
+            'title'         => 'Gerenciar as reservas da unidade',
+            'unit'          => $unit = $this->unitModel->findOrFail($id),
+            'schedules'     => $this->unitService->renderUnitSchedules($unit->id),
+        ];
+
+        return view('Back/Units/schedules', $data);
     }
 }

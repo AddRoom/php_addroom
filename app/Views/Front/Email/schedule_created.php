@@ -10,8 +10,8 @@
     <h1>Novo agendamento criado</h1>
 
     <p>Para Quando: <?php echo $chosen_date; ?></p>
-    <p>Unidade: <?php echo $unit; ?></p>
-    <p>Serviço: <?php echo $service; ?></p>
+    <p>Escola: <?php echo $unit; ?></p>
+    <p>Sala: <?php echo $service; ?></p>
     <p>Endereço: <?php echo $address; ?></p>
 </body>
 </html>
